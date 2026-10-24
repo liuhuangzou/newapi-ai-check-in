@@ -70,10 +70,10 @@ jobs:
         echo "Camoufox version: $version"
 
     - name: 安装 Camoufox 浏览器
-  run: |
-    echo "开始下载 Camoufox 浏览器..."
-    uv run camoufox fetch
-    echo "✅ Camoufox 浏览器安装完成"
+      run: |
+        echo "开始下载 Camoufox 浏览器..."
+        uv run camoufox fetch
+        echo "✅ Camoufox 浏览器安装完成"
 
     - name: 恢复登录状态缓存
       uses: actions/cache/restore@v4
