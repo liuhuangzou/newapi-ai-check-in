@@ -69,21 +69,11 @@ jobs:
         echo "version=$version" >> $env:GITHUB_OUTPUT
         echo "Camoufox version: $version"
 
-    - name: 缓存 Camoufox 浏览器
-      uses: actions/cache@v4
-      id: camoufox-cache
-      with:
-        path: ~\AppData\Local\camoufox
-        key: ${{ runner.os }}-camoufox-${{ steps.camoufox-version.outputs.version }}
-        restore-keys: |
-          ${{ runner.os }}-camoufox-
-
     - name: 安装 Camoufox 浏览器
-      if: steps.camoufox-cache.outputs.cache-hit != 'true'
-      run: |
-        echo "缓存未命中，开始下载 Camoufox 浏览器..."
-        uv run camoufox fetch
-        echo "✅ Camoufox 浏览器安装完成"
+  run: |
+    echo "开始下载 Camoufox 浏览器..."
+    uv run camoufox fetch
+    echo "✅ Camoufox 浏览器安装完成"
 
     - name: 恢复登录状态缓存
       uses: actions/cache/restore@v4
